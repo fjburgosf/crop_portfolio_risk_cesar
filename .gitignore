@@ -1,0 +1,6 @@
+# data are downloaded by step 01; outputs are regenerated
+data/
+results/
+.venv/
+__pycache__/
+*.pyc
