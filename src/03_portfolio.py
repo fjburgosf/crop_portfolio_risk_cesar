@@ -179,7 +179,7 @@ def descriptives(p):
         ok = Y.notna().all() & (A.mean() >= MIN_HA)
         Y, A = Y.loc[:, ok], A.loc[:, ok]
         idx = (Y / Y.mean()).clip(upper=3)
-        cv = idx.std(ddof=0)
+        cv = idx.std(ddof=0) / idx.mean()  # coefficient of variation of the (truncated) index
         crop = pd.Series([c.split("|")[1] for c in idx.columns], index=idx.columns)
         w = A.mean()
         by_crop = (pd.DataFrame({"crop": crop, "cv": cv, "w": w})
